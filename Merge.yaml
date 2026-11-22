@@ -1,7 +1,7 @@
 # NAME: Merge
 # AUTHOR: ld8093
 # REPO: https://github.com/ld8093/Merge
-# UPDATED: 2026-11-22 23:57:15
+# UPDATED: 2026-11-23 00:24:35
 
 
 dns:
@@ -321,7 +321,7 @@ proxy-groups:
     type: "select"
     proxies: ["香港节点", "台湾节点", "日本节点", "美国节点", "狮城节点", "韩国节点", "英国节点"]
     include-all: true
-    exclude-filter: "(?i)^(?!^(香港|台湾|日本|美国|狮城|韩国|英国)节点$).*?(香港|HK|台湾|TW|日本|JP|美国|US|狮城|新加坡|SG|韩国|KR|英国|UK|过期|剩余|套餐|流量|官网|网址)"
+    exclude-filter: "(?i)^(?!^(香港|台湾|台灣|日本|美国|狮城|韩国|英国)节点$).*?(香港|HK|HongKong|台湾|台灣|TW|日本|JP|Japan|美国|US|狮城|新加坡|SG|韩国|KR|英国|UK|过期|剩余|套餐|流量|官网|网址)"
     interval: 300
     timeout: 3000
     url: "https://www.google.com/generate_204"
