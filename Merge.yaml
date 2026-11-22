@@ -230,7 +230,7 @@ rule-providers:
 proxy-providers:
   Airport:
     type: http
-    url: "https://gist.githubusercontent.com/ld8093/ba6583fc0af2325cff92833ac2268f31/raw/Clash"
+    url: "输入您的订阅链接"
     path: ./providers/Airport.yaml
     interval: 3600
     health-check:
