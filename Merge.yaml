@@ -1,7 +1,7 @@
 # NAME: Merge
 # AUTHOR: ld8093
 # REPO: https://github.com/ld8093/Merge
-# UPDATED: 2026-11-23 03:39:33
+# UPDATED: 2026-11-23 03:45:33
 
 dns:
   enable: true
@@ -319,7 +319,7 @@ proxy-groups:
     exclude-filter: "^(?!^(DIRECT|香港节点|韩国节点|台湾节点|狮城节点|日本节点|美国节点)$).*$"
     interval: 300
     timeout: 3000
-    url: "https://www.google.com/generate_204"
+    url: "http://connectivitycheck.gstatic.com/generate_204"
     lazy: true
     max-failed-times: 3
     icon: "https://github.com/blackmatrix7/ios_rule_script/blob/master/icon/qure/color/TikTok.png?raw=true"
