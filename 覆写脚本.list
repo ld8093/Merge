@@ -1,0 +1,35 @@
+function main(config) {
+  // 1. 替换为您的实际节点订阅链接
+  const SUBSCRIPTION_URL = "替换为您的实际节点订阅链接";
+  const PROVIDER_NAME = "MyNodeProvider";
+
+  // 2. 确保 proxy-providers 存在并注入节点订阅
+  config["proxy-providers"] = config["proxy-providers"] || {};
+  config["proxy-providers"][PROVIDER_NAME] = {
+    type: "http",
+    url: SUBSCRIPTION_URL,
+    interval: 86400, // 每 24 小时自动更新一次（秒）
+    path: `./proxy_providers/${PROVIDER_NAME}.yaml`,
+    "health-check": {
+      enable: true,
+      interval: 600,
+      url: "https://www.gstatic.com/generate_204",
+    },
+  };
+
+  // 3. 将该 provider 挂载到策略组（保留原有节点名称与策略组）
+  if (Array.isArray(config["proxy-groups"])) {
+    for (const group of config["proxy-groups"]) {
+      // 跳过纯直连/拒绝类策略组（可根据 Merge.yaml 实际组名微调）
+      if (!group || !group.name) continue;
+      if (["DIRECT", "REJECT"].includes(group.type)) continue;
+
+      group.use = group.use || [];
+      if (!group.use.includes(PROVIDER_NAME)) {
+        group.use.push(PROVIDER_NAME);
+      }
+    }
+  }
+
+  return config;
+}
