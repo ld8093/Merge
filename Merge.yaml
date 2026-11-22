@@ -1,7 +1,7 @@
 # NAME: Merge
 # AUTHOR: ld8093
 # REPO: https://github.com/ld8093/Merge
-# UPDATED: 2026-11-23 00:42:35
+# UPDATED: 2026-11-23 01:23:19
 
 
 dns:
@@ -230,7 +230,7 @@ rule-providers:
 proxy-providers:
   Airport:
     type: http
-    url: "输入您的订阅地址"
+    url: "https://gist.githubusercontent.com/ld8093/ba6583fc0af2325cff92833ac2268f31/raw/Clash"
     path: ./providers/Airport.yaml
     interval: 3600
     health-check:
