@@ -226,18 +226,6 @@ rule-providers:
     path: "./ruleset/ld8093/REJECT.list"
 
 
-# 机场订阅节点
-proxy-providers:
-  Airport:
-    type: http
-    url: "输入您的订阅链接"
-    path: ./providers/Airport.yaml
-    interval: 3600
-    health-check:
-      enable: true
-      url: "https://www.google.com/generate_204"
-
-
 # 代理组 (来自 tun.txt 中的 proxy-groups)
 proxy-groups:
   - name: "香港节点"
