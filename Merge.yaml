@@ -22,7 +22,6 @@ dns:
     - "pool.ntp.org"
     - "localhost.work.weixin.qq.com"
   default-nameserver: ["223.5.5.5", "1.2.4.8"]
-  nameservers: # 注意：部分内核里这里是 nameserver，保持正确缩进即可
   nameserver:
     - "223.5.5.5"
     - "114.114.114.114"
@@ -111,7 +110,7 @@ rule-providers:
     type: http
     format: text
     interval: 86400
-    behavior: domain
+    behavior: classical
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaDomain.list"
     path: "./ruleset/ChinaDomain.list"
   Download:
@@ -153,21 +152,21 @@ rule-providers:
     type: http
     format: text
     interval: 86400
-    behavior: domain
+    behavior: classical
     url: "https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt"
     path: "./ruleset/loyalsoldier/private.txt"
   gfw:
     type: http
     format: text
     interval: 86400
-    behavior: domain
+    behavior: classical
     url: "https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt"
     path: "./ruleset/loyalsoldier/gfw.txt"
   tld-not-cn:
     type: http
     format: text
     interval: 86400
-    behavior: domain
+    behavior: classical
     url: "https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/tld-not-cn.txt"
     path: "./ruleset/loyalsoldier/tld-not-cn.txt"
   Telegram:
@@ -181,7 +180,7 @@ rule-providers:
     type: http
     format: text
     interval: 86400
-    behavior: domain
+    behavior: classical
     url: "https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/applications.txt"
     path: "./ruleset/loyalsoldier/applications.txt"
   YouTube:
@@ -476,7 +475,7 @@ rules:
   - "RULE-SET,GitHub,GitHub"
   - "RULE-SET,ChatGPT,ChatGPT"
   - "RULE-SET,YouTube,YouTube"
-  - "RULE-SET,Telegram,Telegram,no-resolve"
+  - "RULE-SET,Telegram,Telegram,"
   - "RULE-SET,Twitter,Twitter"
   - "RULE-SET,Facebook,Facebook"
   - "RULE-SET,TikTok,TikTok"
@@ -485,8 +484,8 @@ rules:
   - "RULE-SET,foreign,台湾节点"
 
   # 5. 特殊服务 / 指定策略
-  - "RULE-SET,apple,Apple"
   - "RULE-SET,icloud,DIRECT"
+  - "RULE-SET,apple,Apple"
   - "RULE-SET,Microsoft,DIRECT"
   - "RULE-SET,Download,DIRECT"
   - "RULE-SET,direct,DIRECT"
