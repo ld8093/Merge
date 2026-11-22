@@ -1,7 +1,7 @@
 # NAME: Merge
 # AUTHOR: ld8093
 # REPO: https://github.com/ld8093/Merge
-# UPDATED: 2026-11-23 03:45:33
+# UPDATED: 2026-11-23 03:52:33
 
 dns:
   enable: true
@@ -307,7 +307,7 @@ proxy-groups:
     exclude-filter: "^(?!^(DIRECT|全球节点)$).*$"
     interval: 300
     timeout: 3000
-    url: "https://www.google.com/generate_204"
+    url: "http://connectivitycheck.gstatic.com/generate_204"
     lazy: true
     max-failed-times: 3
     hidden: false
@@ -330,7 +330,7 @@ proxy-groups:
     exclude-filter: "^(?!^(DIRECT|香港节点|韩国节点|台湾节点|狮城节点|日本节点|美国节点)$).*$"
     interval: 300
     timeout: 3000
-    url: "https://www.google.com/generate_204"
+    url: "http://connectivitycheck.gstatic.com/generate_204"
     lazy: true
     max-failed-times: 3
     icon: "https://raw.githubusercontent.com/ld8093/App-icon/refs/heads/main/WeChat.png"
@@ -444,7 +444,7 @@ proxy-groups:
     exclude-filter: "^(?!^(DIRECT|香港节点|韩国节点|台湾节点|狮城节点|日本节点|美国节点|全球节点)$).*$"
     interval: 300
     timeout: 3000
-    url: "https://www.google.com/generate_204"
+    url: "http://connectivitycheck.gstatic.com/generate_204"
     lazy: true
     max-failed-times: 3
     hidden: false
