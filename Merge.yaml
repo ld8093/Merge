@@ -1,7 +1,7 @@
 # NAME: Merge
 # AUTHOR: ld8093
 # REPO: https://github.com/ld8093/Merge
-# UPDATED: 2026-11-23 01:23:19
+# UPDATED: 2026-11-23 02:28:19
 
 
 dns:
@@ -166,8 +166,8 @@ rule-providers:
     format: text
     interval: 86400
     behavior: classical
-    url: "https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt"
-    path: "./ruleset/loyalsoldier/gfw.txt"
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Proxy/Proxy.list"
+    path: "./ruleset/blackmatrix7/Proxy.list"
   tld-not-cn:
     type: http
     format: text
