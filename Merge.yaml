@@ -359,7 +359,7 @@ proxy-groups:
     url: "https://www.google.com/generate_204"
     lazy: true
     max-failed-times: 3
-    icon: "https://github.com/blackmatrix7/ios_rule_script/blob/master/icon/qure/color/WeChat.png?raw=true"
+    icon: "https://raw.githubusercontent.com/ld8093/App-icon/refs/heads/main/WeChat.png"
   - name: "TikTok"
     type: "select"
     proxies: ["香港节点", "韩国节点", "台湾节点", "狮城节点", "日本节点", "美国节点", "全球节点"]
