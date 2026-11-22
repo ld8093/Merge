@@ -1,7 +1,7 @@
 # NAME: Merge
 # AUTHOR: ld8093
 # REPO: https://github.com/ld8093/Merge
-# UPDATED: 2026-11-23 02:28:19
+# UPDATED: 2026-11-23 03:21:49
 
 
 dns:
@@ -124,8 +124,8 @@ rule-providers:
     format: text
     interval: 86400
     behavior: classical
-    url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Download.list"
-    path: "./ruleset/Download.list"
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Download/Download.list"
+    path: "./ruleset/blackmatrix7/Download.list"
   TikTok:
     type: http
     format: text
@@ -159,8 +159,8 @@ rule-providers:
     format: text
     interval: 86400
     behavior: classical
-    url: "https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt"
-    path: "./ruleset/loyalsoldier/private.txt"
+    url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list"
+    path: "./ruleset/ACL4SSR/LocalAreaNetwork.list"
   gfw:
     type: http
     format: text
@@ -168,13 +168,6 @@ rule-providers:
     behavior: classical
     url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Proxy/Proxy.list"
     path: "./ruleset/blackmatrix7/Proxy.list"
-  tld-not-cn:
-    type: http
-    format: text
-    interval: 86400
-    behavior: classical
-    url: "https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/tld-not-cn.txt"
-    path: "./ruleset/loyalsoldier/tld-not-cn.txt"
   Telegram:
     type: http
     format: text
@@ -182,13 +175,6 @@ rule-providers:
     behavior: classical
     url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Telegram/Telegram.list"
     path: "./ruleset/blackmatrix7/Telegram.list"
-  applications:
-    type: http
-    format: text
-    interval: 86400
-    behavior: classical
-    url: "https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/applications.txt"
-    path: "./ruleset/loyalsoldier/applications.txt"
   YouTube:
     type: http
     format: text
@@ -460,9 +446,7 @@ rules:
   - "RULE-SET,REJECT,REJECT"
 
   # 2. 本地 / 局域网 / 应用
-  - "GEOIP,LAN,DIRECT,no-resolve"
   - "RULE-SET,private,DIRECT"
-  - "RULE-SET,applications,DIRECT"
 
   # 3. 精准代理服务
   - "RULE-SET,Gemini,Gemini"
@@ -499,8 +483,7 @@ rules:
   - "GEOIP,CN,DIRECT,no-resolve"
 
   # 9. GFW / 海外分类
-  - "RULE-SET,gfw,全球节点"
-  - "RULE-SET,tld-not-cn,全球节点"  
+  - "RULE-SET,gfw,全球节点"  
 
   # 10. 最终兜底
   - "MATCH,兜底后备"
