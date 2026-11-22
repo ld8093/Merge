@@ -318,6 +318,7 @@ proxy-groups:
     type: "select"
     proxies: ["DIRECT", "香港节点", "韩国节点", "台湾节点", "狮城节点", "日本节点", "美国节点"]
     include-all: false
+    exclude-filter: "^(?!^(DIRECT|香港节点|韩国节点|台湾节点|狮城节点|日本节点|美国节点)$).*$"
     interval: 300
     timeout: 3000
     url: "https://www.google.com/generate_204"
