@@ -1,0 +1,211 @@
+function main(config) {
+  if (!config || typeof config !== "object") {
+    return config;
+  }
+
+  // 1. 填入两个节点订阅链接
+  const SUBSCRIPTIONS = [
+    {
+      name: "NodeProvider1",
+      url: "`填入您的第一个订阅链接",
+    },
+    {
+      name: "NodeProvider2",
+      url: "填入您第二个订阅链接",
+    },
+  ];
+
+  const SECOND_PROVIDER = "NodeProvider2";
+
+  // 2. 专属自动测速策略组（仅使用第二个订阅，自动选延迟最低节点）
+  const EXCLUSIVE_GROUPS = [
+    {
+      name: "HK Node",
+      type: "url-test",
+      "include-all": false,
+      use: [SECOND_PROVIDER],
+      filter: "港|HK|hk|Hong Kong|HongKong|hongkong",
+      interval: 300,
+      tolerance: 50,
+      timeout: 3000,
+      url: "https://www.google.com/generate_204",
+      lazy: true,
+      "max-failed-times": 3,
+      hidden: false,
+      icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/hong-kong.gif",
+    },
+    {
+      name: "TW Node",
+      type: "url-test",
+      "include-all": false,
+      use: [SECOND_PROVIDER],
+      filter: "台|新北|彰化|TW|tw|Taiwan",
+      interval: 300,
+      tolerance: 50,
+      timeout: 3000,
+      url: "https://www.google.com/generate_204",
+      lazy: true,
+      "max-failed-times": 3,
+      hidden: false,
+      icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/taiwan.gif",
+    },
+    {
+      name: "US Node",
+      type: "url-test",
+      "include-all": false,
+      use: [SECOND_PROVIDER],
+      filter:
+        "美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|us|United States",
+      interval: 300,
+      tolerance: 50,
+      timeout: 3000,
+      url: "https://www.google.com/generate_204",
+      lazy: true,
+      "max-failed-times": 3,
+      hidden: false,
+      icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/united-states.gif",
+    },
+  ];
+
+  // 3. 目标策略组清单（10 个应用组 + 全球节点 + 兜底后备 + 抖音 + WeChat，不分大小写比对）
+  const TARGET_APP_GROUPS = [
+    "apple",
+    "youtube",
+    "twitter",
+    "github",
+    "google",
+    "facebook",
+    "chatgpt",
+    "tiktok",
+    "telegram",
+    "gemini",
+    "全球节点",
+    "兜底后备",
+    "抖音",
+    "wechat",
+  ];
+
+  // 4. 目标策略组默认保留的地区/总览策略组（避免单节点全部展开）
+  const DEFAULT_REGION_GROUPS = [
+    "香港节点",
+    "台湾节点",
+    "美国节点",
+    "韩国节点",
+    "狮城节点",
+    "日本节点",
+    "全球节点",
+  ];
+
+  const exclusiveNames = ["HK Node", "TW Node", "US Node"];
+  const allProviderNames = SUBSCRIPTIONS.map((item) => item.name);
+
+  // 5. 注入 proxy-providers
+  config["proxy-providers"] =
+    config["proxy-providers"] && typeof config["proxy-providers"] === "object"
+      ? config["proxy-providers"]
+      : {};
+
+  for (let i = 0; i < SUBSCRIPTIONS.length; i++) {
+    const sub = SUBSCRIPTIONS[i];
+    if (!sub || !sub.name || !sub.url) continue;
+
+    config["proxy-providers"][sub.name] = {
+      type: "http",
+      url: sub.url,
+      interval: 86400,
+      path: "./proxy_providers/" + sub.name + ".yaml",
+      "health-check": {
+        enable: true,
+        interval: 600,
+        url: "https://www.gstatic.com/generate_204",
+      },
+    };
+  }
+
+  // 6. 建立或更新 HK Node / TW Node / US Node
+  config["proxy-groups"] = Array.isArray(config["proxy-groups"])
+    ? config["proxy-groups"]
+    : [];
+
+  for (let i = EXCLUSIVE_GROUPS.length - 1; i >= 0; i--) {
+    const item = EXCLUSIVE_GROUPS[i];
+    const idx = config["proxy-groups"].findIndex(
+      (g) => g && String(g.name || "").trim() === item.name
+    );
+
+    if (idx !== -1) {
+      config["proxy-groups"][idx] = Object.assign(
+        {},
+        config["proxy-groups"][idx],
+        item
+      );
+    } else {
+      config["proxy-groups"].unshift(Object.assign({}, item));
+    }
+  }
+
+  // 7. 整理目标策略组选项，并让其他地区组正常挂载订阅
+  const existingGroupNames = new Set(
+    config["proxy-groups"]
+      .filter((g) => g && g.name)
+      .map((g) => String(g.name).trim())
+  );
+
+  for (let i = 0; i < config["proxy-groups"].length; i++) {
+    const group = config["proxy-groups"][i];
+    if (!group || !group.name) continue;
+
+    const gName = String(group.name).trim();
+    const gLower = gName.toLowerCase();
+
+    if (exclusiveNames.indexOf(gName) !== -1) continue;
+    if (group.type === "DIRECT" || group.type === "REJECT") continue;
+
+    if (TARGET_APP_GROUPS.indexOf(gLower) !== -1) {
+      delete group.filter;
+      delete group["exclude-filter"];
+      delete group["exclude-type"];
+      group["include-all"] = false;
+      group.use = [];
+
+      const baseProxies = Array.isArray(group.proxies) ? group.proxies.slice() : [];
+      const merged = [];
+
+      for (let j = 0; j < exclusiveNames.length; j++) {
+        if (merged.indexOf(exclusiveNames[j]) === -1) {
+          merged.push(exclusiveNames[j]);
+        }
+      }
+
+      for (let k = 0; k < baseProxies.length; k++) {
+        const pItem = baseProxies[k];
+        if (merged.indexOf(pItem) === -1) {
+          merged.push(pItem);
+        }
+      }
+
+      for (let r = 0; r < DEFAULT_REGION_GROUPS.length; r++) {
+        const regName = DEFAULT_REGION_GROUPS[r];
+        if (
+          regName !== gName &&
+          existingGroupNames.has(regName) &&
+          merged.indexOf(regName) === -1
+        ) {
+          merged.push(regName);
+        }
+      }
+
+      group.proxies = merged;
+    } else {
+      group.use = Array.isArray(group.use) ? group.use : [];
+      for (let p = 0; p < allProviderNames.length; p++) {
+        const pName = allProviderNames[p];
+        if (group.use.indexOf(pName) === -1) {
+          group.use.push(pName);
+        }
+      }
+    }
+  }
+
+  return config;
+}
