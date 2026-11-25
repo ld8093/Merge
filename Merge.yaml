@@ -1,7 +1,7 @@
 # NAME: Merge
 # AUTHOR: ld8093
 # REPO: https://github.com/ld8093/Merge
-# UPDATED: 2026-11-23 03:52:33
+# UPDATED: 2026-11-26 02:28:33
 
 dns:
   enable: true
@@ -463,7 +463,7 @@ rules:
   - "RULE-SET,Twitter,Twitter"
   - "RULE-SET,Facebook,Facebook"
   - "RULE-SET,TikTok,TikTok"
-  - "RULE-SET,foreign,台湾节点"
+  - "RULE-SET,foreign,全球节点"
   - "RULE-SET,icloud,DIRECT"
   - "RULE-SET,apple,Apple"
   - "RULE-SET,Microsoft,DIRECT"
