@@ -7,7 +7,7 @@ function main(config) {
   const SUBSCRIPTIONS = [
     {
       name: "NodeProvider1",
-      url: "`填入您的第一个订阅链接",
+      url: "`填入您第一个订阅链接",
     },
     {
       name: "NodeProvider2",
