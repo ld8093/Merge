@@ -1,0 +1,537 @@
+
+# NAME: Merge
+# AUTHOR: ld8093
+# REPO: https://github.com/ld8093/Merge
+# UPDATED: 2026-11-26
+
+dns:
+  enable: true
+  listen: "0.0.0.0:1053"
+  ipv6: false
+  prefer-h3: false
+  respect-rules: true
+  use-system-hosts: false
+  cache-algorithm: "arc"
+  enhanced-mode: "fake-ip"
+  fake-ip-range: "198.18.0.1/16"
+  fake-ip-filter:
+    - "+.lan"
+    - "+.local"
+    - "+.msftconnecttest.com"
+    - "+.msftncsi.com"
+    - "localhost.ptlogin2.qq.com"
+    - "localhost.sec.qq.com"
+    - "+.in-addr.arpa"
+    - "+.ip6.arpa"
+    - "time.*.com"
+    - "time.*.gov"
+    - "pool.ntp.org"
+    - "localhost.work.weixin.qq.com"
+  default-nameserver: ["223.5.5.5", "1.2.4.8"]
+  nameserver:
+    - "223.5.5.5"
+    - "114.114.114.114"
+    - "https://1.1.1.1/dns-query"
+    - "https://8.8.4.4/dns-query"
+  proxy-server-nameserver:
+    - "https://223.5.5.5/dns-query"
+    - "https://doh.pub/dns-query"
+  nameserver-policy:
+    "geosite:private,cn":
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+
+rule-providers:
+  Advertising:
+    type: http
+    format: text
+    interval: 86400
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Advertising/Advertising.list"
+    path: "./ruleset/Advertising.list"
+  WeChat:
+    type: http
+    format: text
+    interval: 86400
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/WeChat/WeChat.list"
+    path: "./ruleset/WeChat.list"
+  DouYin:
+    type: http
+    format: text
+    interval: 86400
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/DouYin/DouYin.list"
+    path: "./ruleset/DouYin.list"
+  GitHub:
+    type: http
+    format: text
+    interval: 86400
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/GitHub/GitHub.list"
+    path: "./ruleset/GitHub.list"
+  Google:
+    type: http
+    format: text
+    interval: 86400
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Google/Google.list"
+    path: "./ruleset/Google.list"
+  Twitter:
+    type: http
+    format: text
+    interval: 86400
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Twitter/Twitter.list"
+    path: "./ruleset/Twitter.list"
+  Facebook:
+    type: http
+    format: text
+    interval: 86400
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Facebook/Facebook.list"
+    path: "./ruleset/Facebook.list"
+  Microsoft:
+    type: http
+    format: text
+    interval: 86400
+    behavior: classical
+    url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Microsoft.list"
+    path: "./ruleset/Microsoft.list"
+  ChatGPT:
+    type: http
+    format: text
+    interval: 86400
+    behavior: classical
+    url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/OpenAi.list"
+    path: "./ruleset/OpenAi.list"
+  ChinaMedia:
+    type: http
+    format: text
+    interval: 86400
+    behavior: classical
+    url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaMedia.list"
+    path: "./ruleset/ChinaMedia.list"
+  ChinaDomain:
+    type: http
+    format: text
+    interval: 86400
+    behavior: classical
+    url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaDomain.list"
+    path: "./ruleset/ChinaDomain.list"
+  Download:
+    type: http
+    format: text
+    interval: 86400
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Download/Download.list"
+    path: "./ruleset/blackmatrix7/Download.list"
+  TikTok:
+    type: http
+    format: text
+    interval: 86400
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/TikTok/TikTok.list"
+    path: "./ruleset/blackmatrix7/TikTok.list"
+  icloud:
+    type: http
+    format: text
+    interval: 86400
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/iCloud/iCloud.list"
+    path: "./ruleset/blackmatrix7/iCloud.list"
+  apple:
+    type: http
+    format: text
+    interval: 86400
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Apple/Apple.list"
+    path: "./ruleset/blackmatrix7/Apple.list"
+  direct:
+    type: http
+    format: text
+    interval: 86400
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Direct/Direct.list"
+    path: "./ruleset/blackmatrix7/Direct.list"
+  private:
+    type: http
+    format: text
+    interval: 86400
+    behavior: classical
+    url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list"
+    path: "./ruleset/ACL4SSR/LocalAreaNetwork.list"
+  gfw:
+    type: http
+    format: text
+    interval: 86400
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Proxy/Proxy.list"
+    path: "./ruleset/blackmatrix7/Proxy.list"
+  Telegram:
+    type: http
+    format: text
+    interval: 86400
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Telegram/Telegram.list"
+    path: "./ruleset/blackmatrix7/Telegram.list"
+  YouTube:
+    type: http
+    format: text
+    interval: 86400
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/YouTube/YouTube.list"
+    path: "./ruleset/blackmatrix7/YouTube.list"
+  MyDirect:
+    type: http
+    format: text
+    interval: 86400
+    behavior: classical
+    url: "https://raw.githubusercontent.com/ld8093/MyDirect/refs/heads/main/MyDirect.list"
+    path: "./ruleset/ld8093/MyDirect.list"
+  Gemini:
+    type: http
+    format: text
+    interval: 86400
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Gemini/Gemini.list"
+    path: "./ruleset/blackmatrix7/Gemini.list"
+  foreign:
+    type: http
+    format: text
+    interval: 86400
+    behavior: classical
+    url: "https://raw.githubusercontent.com/ld8093/foreign/refs/heads/main/foreign.list"
+    path: "./ruleset/ld8093/foreign.list"
+  REJECT:
+    type: http
+    format: text
+    interval: 86400
+    behavior: classical
+    url: "https://raw.githubusercontent.com/ld8093/REJECT/refs/heads/main/REJECT.list"
+    path: "./ruleset/ld8093/REJECT.list"
+
+proxy-groups:
+  - name: "HK Node"
+    type: url-test
+    include-all: false
+    use:
+      - NodeProvider2
+    filter: "(?i)港|HK|Hong Kong|HongKong|hongkong"
+    url: "https://www.gstatic.com/generate_204"
+    interval: 1800
+    tolerance: 50
+    lazy: true
+    icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png"
+
+  - name: "TW Node"
+    type: url-test
+    include-all: false
+    use:
+      - NodeProvider2
+    filter: "(?i)台|新北|彰化|TW|Taiwan"
+    url: "https://www.gstatic.com/generate_204"
+    interval: 1800
+    tolerance: 50
+    lazy: true
+    icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Taiwan.png"
+
+  - name: "US Node"
+    type: url-test
+    include-all: false
+    use:
+      - NodeProvider2
+    filter: "(?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States"
+    url: "https://www.gstatic.com/generate_204"
+    interval: 1800
+    tolerance: 50
+    lazy: true
+    icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png"
+
+  - name: "香港节点"
+    type: "select"
+    include-all: true
+    filter: "(?i)港|HK|hk|Hong Kong|HongKong|hongkong"
+    interval: 300
+    timeout: 3000
+    url: "https://www.google.com/generate_204"
+    lazy: true
+    max-failed-times: 3
+    hidden: false
+    icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png"
+
+  - name: "日本节点"
+    type: "select"
+    include-all: true
+    filter: "(?i)日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan"
+    interval: 300
+    timeout: 3000
+    url: "https://www.google.com/generate_204"
+    lazy: true
+    max-failed-times: 3
+    hidden: false
+    icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png"
+
+  - name: "美国节点"
+    type: "select"
+    include-all: true
+    filter: "(?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States"
+    interval: 300
+    timeout: 3000
+    url: "https://www.google.com/generate_204"
+    lazy: true
+    max-failed-times: 3
+    hidden: false
+    icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png"
+
+  - name: "台湾节点"
+    type: "select"
+    include-all: true
+    filter: "(?i)台|新北|彰化|TW|Taiwan"
+    interval: 300
+    timeout: 3000
+    url: "https://www.google.com/generate_204"
+    lazy: true
+    max-failed-times: 3
+    hidden: false
+    icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Taiwan.png"
+
+  - name: "狮城节点"
+    type: "select"
+    include-all: true
+    filter: "(?i)新加坡|狮城|SG|Singapore"
+    interval: 300
+    timeout: 3000
+    url: "https://www.google.com/generate_204"
+    lazy: true
+    max-failed-times: 3
+    hidden: false
+    icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png"
+
+  - name: "韩国节点"
+    type: "select"
+    include-all: true
+    filter: "(?i)KR|Korea|KOR|首尔|韩|韓"
+    interval: 300
+    timeout: 3000
+    url: "https://www.google.com/generate_204"
+    lazy: true
+    max-failed-times: 3
+    hidden: false
+    icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Korea.png"
+
+  - name: "英国节点"
+    type: "select"
+    include-all: true
+    filter: "🇬🇧|英国|英|英格兰|UK|United Kingdom"
+    interval: 300
+    timeout: 3000
+    url: "https://www.google.com/generate_204"
+    lazy: true
+    max-failed-times: 3
+    hidden: false
+    icon: "https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/United_Kingdom.png"
+
+  - name: "全球节点"
+    type: "select"
+    proxies: ["HK Node","TW Node","US Node","香港节点", "台湾节点", "日本节点", "美国节点", "狮城节点", "韩国节点", "英国节点"]
+    include-all: true
+    exclude-filter: "(?i)^(?!(香港|台湾|台灣|日本|美国|狮城|韩国|英国)节点$|HK Node$|TW Node$|US Node$).*?(香港|HK|HongKong|台湾|台灣|TW|日本|JP|Japan|美国|US|狮城|新加坡|SG|韩国|KR|英国|UK|过期|剩余|套餐|流量|官网|网址)"
+    interval: 300
+    timeout: 3000
+    url: "https://www.google.com/generate_204"
+    lazy: true
+    max-failed-times: 3
+    hidden: false
+    icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/Global.png"
+
+  - name: "Apple"
+    type: "select"
+    proxies: ["DIRECT", "HK Node", "TW Node", "US Node", "全球节点"]
+    include-all: false
+    exclude-filter: "^(?!^(DIRECT|全球节点|HK Node|TW Node|US Node)$).*$"
+    interval: 300
+    timeout: 3000
+    url: "http://connectivitycheck.gstatic.com/generate_204"
+    lazy: true
+    max-failed-times: 3
+    hidden: false
+    icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/apple.svg"
+
+  - name: "抖音"
+    type: "select"
+    proxies: ["DIRECT", "HK Node", "TW Node", "US Node", "香港节点", "韩国节点", "台湾节点", "狮城节点", "日本节点", "美国节点"]
+    include-all: false
+    exclude-filter: "^(?!^(DIRECT|HK Node|TW Node|US Node|香港节点|韩国节点|台湾节点|狮城节点|日本节点|美国节点)$).*$"
+    interval: 300
+    timeout: 3000
+    url: "http://connectivitycheck.gstatic.com/generate_204"
+    lazy: true
+    max-failed-times: 3
+    icon: "https://github.com/blackmatrix7/ios_rule_script/blob/master/icon/qure/color/TikTok.png?raw=true"
+
+  - name: "WeChat"
+    type: "select"
+    proxies: ["DIRECT", "HK Node", "TW Node", "US Node", "香港节点", "韩国节点", "台湾节点", "狮城节点", "日本节点", "美国节点"]
+    include-all: false
+    exclude-filter: "^(?!^(DIRECT|HK Node|TW Node|US Node|香港节点|韩国节点|台湾节点|狮城节点|日本节点|美国节点)$).*$"
+    interval: 300
+    timeout: 3000
+    url: "http://connectivitycheck.gstatic.com/generate_204"
+    lazy: true
+    max-failed-times: 3
+    icon: "https://raw.githubusercontent.com/ld8093/App-icon/refs/heads/main/WeChat.png"
+
+  - name: "TikTok"
+    type: "select"
+    proxies: ["HK Node", "TW Node", "US Node", "香港节点", "韩国节点", "台湾节点", "狮城节点", "日本节点", "美国节点", "全球节点"]
+    include-all: false
+    exclude-filter: "^(?!^(HK Node|TW Node|US Node|香港节点|韩国节点|台湾节点|狮城节点|日本节点|美国节点|全球节点)$).*$"
+    interval: 300
+    timeout: 3000
+    url: "https://www.google.com/generate_204"
+    lazy: true
+    max-failed-times: 3
+    hidden: false
+    icon: "https://github.com/blackmatrix7/ios_rule_script/blob/master/icon/color/tiktok.png?raw=true"
+
+  - name: "YouTube"
+    type: select
+    proxies: ["HK Node", "TW Node", "US Node", "香港节点", "韩国节点", "台湾节点", "狮城节点", "日本节点", "美国节点", "全球节点"]
+    include-all: false
+    exclude-filter: "^(?!^(HK Node|TW Node|US Node|香港节点|韩国节点|台湾节点|狮城节点|日本节点|美国节点|全球节点)$).*$"
+    interval: 300
+    timeout: 3000
+    url: "https://www.google.com/generate_204"
+    lazy: true
+    max-failed-times: 3
+    hidden: false
+    icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/youtube.svg"
+
+  - name: "GitHub"
+    type: "select"
+    proxies: ["HK Node", "TW Node", "US Node", "香港节点", "韩国节点", "台湾节点", "狮城节点", "日本节点", "美国节点", "全球节点"]
+    include-all: false
+    exclude-filter: "^(?!^(HK Node|TW Node|US Node|香港节点|韩国节点|台湾节点|狮城节点|日本节点|美国节点|全球节点)$).*$"
+    interval: 300
+    timeout: 3000
+    url: "https://www.google.com/generate_204"
+    lazy: true
+    max-failed-times: 3
+    icon: "https://github.com/blackmatrix7/ios_rule_script/blob/master/icon/qure/color/GitHub.png?raw=true"
+
+  - name: "Twitter"
+    type: "select"
+    proxies: ["HK Node", "TW Node", "US Node", "香港节点", "韩国节点", "台湾节点", "狮城节点", "日本节点", "美国节点", "全球节点"]
+    include-all: false
+    exclude-filter: "^(?!^(HK Node|TW Node|US Node|香港节点|韩国节点|台湾节点|狮城节点|日本节点|美国节点|全球节点)$).*$"
+    interval: 300
+    timeout: 3000
+    url: "https://www.google.com/generate_204"
+    lazy: true
+    max-failed-times: 3
+    icon: "https://github.com/blackmatrix7/ios_rule_script/blob/master/icon/color/twitter.png?raw=true"
+
+  - name: "Google"
+    type: "select"
+    proxies: ["HK Node", "TW Node", "US Node", "香港节点", "韩国节点", "台湾节点", "狮城节点", "日本节点", "美国节点", "全球节点"]
+    include-all: false
+    exclude-filter: "^(?!^(HK Node|TW Node|US Node|香港节点|韩国节点|台湾节点|狮城节点|日本节点|美国节点|全球节点)$).*$"
+    interval: 300
+    timeout: 3000
+    url: "https://www.google.com/generate_204"
+    lazy: true
+    max-failed-times: 3
+    icon: "https://github.com/blackmatrix7/ios_rule_script/blob/master/icon/color/google.png?raw=true"
+
+  - name: "Gemini"
+    type: "select"
+    proxies: ["HK Node", "TW Node", "US Node", "香港节点", "韩国节点", "台湾节点", "狮城节点", "日本节点", "美国节点", "全球节点"]
+    include-all: false
+    exclude-filter: "^(?!^(HK Node|TW Node|US Node|香港节点|韩国节点|台湾节点|狮城节点|日本节点|美国节点|全球节点)$).*$"
+    interval: 300
+    timeout: 3000
+    url: "https://www.google.com/generate_204"
+    lazy: true
+    max-failed-times: 3
+    icon: "https://raw.githubusercontent.com/ld8093/My-Icon/refs/heads/main/Gemini.PNG"
+
+  - name: "Facebook"
+    type: "select"
+    proxies: ["HK Node", "TW Node", "US Node", "香港节点", "韩国节点", "台湾节点", "狮城节点", "日本节点", "美国节点", "全球节点"]
+    include-all: false
+    exclude-filter: "^(?!^(HK Node|TW Node|US Node|香港节点|韩国节点|台湾节点|狮城节点|日本节点|美国节点|全球节点)$).*$"
+    interval: 300
+    timeout: 3000
+    url: "https://www.google.com/generate_204"
+    lazy: true
+    max-failed-times: 3
+    icon: "https://github.com/blackmatrix7/ios_rule_script/blob/master/icon/qure/color/Facebook.png?raw=true"
+
+  - name: "Telegram"
+    type: "select"
+    proxies: ["HK Node", "TW Node", "US Node", "香港节点", "韩国节点", "台湾节点", "狮城节点", "日本节点", "美国节点", "全球节点"]
+    include-all: false
+    exclude-filter: "^(?!^(HK Node|TW Node|US Node|香港节点|韩国节点|台湾节点|狮城节点|日本节点|美国节点|全球节点)$).*$"
+    interval: 300
+    timeout: 3000
+    url: "https://www.google.com/generate_204"
+    lazy: true
+    max-failed-times: 3
+    hidden: false
+    icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/telegram.svg"
+
+  - name: "ChatGPT"
+    type: "select"
+    proxies: ["HK Node", "TW Node", "US Node", "香港节点", "韩国节点", "台湾节点", "狮城节点", "日本节点", "美国节点", "全球节点"]
+    include-all: false
+    exclude-filter: "^(?!^(HK Node|TW Node|US Node|香港节点|韩国节点|台湾节点|狮城节点|日本节点|美国节点|全球节点)$).*$"
+    interval: 300
+    timeout: 3000
+    url: "https://www.google.com/generate_204"
+    lazy: true
+    max-failed-times: 3
+    hidden: false
+    icon: "https://raw.githubusercontent.com/ld8093/App-icon/refs/heads/main/ChatGPT.PNG"
+
+  - name: "兜底后备"
+    type: "select"
+    proxies: ["DIRECT", "HK Node", "TW Node", "US Node", "香港节点", "韩国节点", "台湾节点", "狮城节点", "日本节点", "美国节点", "全球节点"]
+    include-all: false
+    exclude-filter: "^(?!^(DIRECT|HK Node|TW Node|US Node|香港节点|韩国节点|台湾节点|狮城节点|日本节点|美国节点|全球节点)$).*$"
+    interval: 300
+    timeout: 3000
+    url: "http://connectivitycheck.gstatic.com/generate_204"
+    lazy: true
+    max-failed-times: 3
+    hidden: false
+    icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/fish.svg"
+
+rules:
+  - "RULE-SET,Advertising,REJECT"
+  - "RULE-SET,REJECT,REJECT"
+  - "RULE-SET,private,DIRECT"
+  - "RULE-SET,Gemini,Gemini"
+  - "RULE-SET,Google,Google"
+  - "RULE-SET,GitHub,GitHub"
+  - "RULE-SET,ChatGPT,ChatGPT"
+  - "RULE-SET,YouTube,YouTube"
+  - "RULE-SET,Telegram,Telegram"
+  - "RULE-SET,Twitter,Twitter"
+  - "RULE-SET,Facebook,Facebook"
+  - "RULE-SET,TikTok,TikTok"
+  - "RULE-SET,foreign,全球节点"
+  - "RULE-SET,icloud,DIRECT"
+  - "RULE-SET,apple,Apple"
+  - "RULE-SET,Microsoft,DIRECT"
+  - "RULE-SET,Download,DIRECT"
+  - "RULE-SET,direct,DIRECT"
+  - "RULE-SET,DouYin,抖音"
+  - "RULE-SET,WeChat,WeChat"
+  - "RULE-SET,MyDirect,DIRECT"
+  - "RULE-SET,ChinaMedia,DIRECT"
+  - "RULE-SET,ChinaDomain,DIRECT"
+  - "GEOSITE,CN,DIRECT"
+  - "GEOIP,CN,DIRECT,no-resolve"
+  - "RULE-SET,gfw,全球节点"
+  - "MATCH,兜底后备"
