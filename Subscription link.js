@@ -1,4 +1,4 @@
-
+#
 function main(config) {
   if (!config || typeof config !== "object") return config;
 
