@@ -300,39 +300,6 @@ proxy-groups:
     max-failed-times: 3
     hidden: false
     icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/Global.png"
-  - name: "HK Node"
-    type: url-test
-    include-all: false
-    use:
-      - NodeProvider2
-    filter: "(?i)港|HK|Hong Kong|HongKong|hongkong"
-    url: "https://www.gstatic.com/generate_204"
-    interval: 1800
-    tolerance: 50
-    lazy: true
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/hong-kong.gif"
-  - name: "TW Node"
-    type: url-test
-    include-all: false
-    use:
-      - NodeProvider2
-    filter: "(?i)台|新北|彰化|TW|Taiwan"
-    url: "https://www.gstatic.com/generate_204"
-    interval: 1800
-    tolerance: 50
-    lazy: true
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/taiwan.gif"
-  - name: "US Node"
-    type: url-test
-    include-all: false
-    use:
-      - NodeProvider2
-    filter: "(?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States"
-    url: "https://www.gstatic.com/generate_204"
-    interval: 1800
-    tolerance: 50
-    lazy: true
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/united-states.gif"
   - name: "Apple"
     type: "select"
     proxies: ["DIRECT", "全球节点"]
