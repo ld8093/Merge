@@ -310,6 +310,7 @@ proxy-groups:
     interval: 1800
     tolerance: 50
     lazy: true
+    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/hong-kong.gif"
   - name: "TW Node"
     type: url-test
     include-all: false
@@ -320,6 +321,7 @@ proxy-groups:
     interval: 1800
     tolerance: 50
     lazy: true
+    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/taiwan.gif"
   - name: "US Node"
     type: url-test
     include-all: false
@@ -330,6 +332,7 @@ proxy-groups:
     interval: 1800
     tolerance: 50
     lazy: true
+    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/united-states.gif"
   - name: "Apple"
     type: "select"
     proxies: ["DIRECT", "全球节点"]
